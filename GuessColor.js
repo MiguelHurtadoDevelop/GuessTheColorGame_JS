@@ -10,11 +10,13 @@ window.onload = function () {
    const hard = document.getElementById('hard');
     const newColors = document.getElementById('cambiarColores');
     var dificultad = "easy";
+    
     easy.addEventListener("click", function(){
 
         
         dificultad = "easy";
         jugar(dificultad, solucion);
+          
     });
 
     hard.addEventListener("click", function(){
@@ -38,7 +40,7 @@ window.onload = function () {
 
 
 function jugar(nivel, solucion){
-    
+    var vidas = 3;
     header = document.querySelector('header');
     header.style.backgroundColor = "rgb(33, 41, 210)";
     solucion = crearColorAleatorio();
@@ -72,9 +74,9 @@ function jugar(nivel, solucion){
 
         cuadrados[numeroAleatorio].style.backgroundColor = solucion;
     }
-    var vidas = 3;
+    
     const container = document.getElementById('container');
-
+    
     container.addEventListener("click", function(e){
         
         if(comprobarSolución(solucion, e.target.style.backgroundColor)){
@@ -90,6 +92,7 @@ function jugar(nivel, solucion){
                     header.style.backgroundColor = solucion;
                     const Titulo = document.getElementById('Titulo');
                     Titulo.innerHTML = "Has ganado";
+
                 }
             }else if(nivel == "hard"){
                 for(var i = 0; i < cuadrados.length; i++){
@@ -119,6 +122,7 @@ function jugar(nivel, solucion){
                         header.style.backgroundColor = "rgb(255, 0, 0)";
                         const Titulo = document.getElementById('Titulo');
                         Titulo.innerHTML = "Has perdido";
+                        
                     }
                 }else if(nivel == "hard"){
                     for(var i = 0; i < cuadrados.length; i++){
@@ -130,6 +134,7 @@ function jugar(nivel, solucion){
                         header.style.backgroundColor = "rgb(255, 0, 0)";
                         const Titulo = document.getElementById('Titulo');
                         Titulo.innerHTML = "Has perdido";
+                        
                     }
                 }
             }
